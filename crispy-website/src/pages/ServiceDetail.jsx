@@ -14,7 +14,7 @@ const ServiceDetail = () => {
         console.log(id)
         const fetchService = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/services/${id}`); // Adjust endpoint if needed
+                const response = await fetch(`/api/services/${id}`); // Adjust endpoint if needed
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

@@ -43,52 +43,29 @@ const data = [
     },
 ];
 
+// API endpoint to get all services
 app.get('/api/services', (req, res) => {
     const servicesWithImageUrls = data.map(service => ({
         ...service,
-        image: `http://localhost:${PORT}/images/${service.image}`,
-        bgImage: `http://localhost:${PORT}/images/${service.bgImage}`, // Construct the full URL for the image
-        // Construct the full URL for the image
+        image: `${req.protocol}://${req.get('host')}/images/${service.image}`, // Use req.protocol and req.get('host')
+        bgImage: `${req.protocol}://${req.get('host')}/images/${service.bgImage}`,
     }));
     res.json(servicesWithImageUrls);
 });
 
-// app.get('/api/services/:id', (req, res) => {
-//     const servicesWithImageUrls = data.map(service => ({
-//         ...service,
-
-//         bgImage: `http://localhost:${PORT}/images/${service.bgImage}`, // Construct the full URL for the image
-//          // Construct the full URL for the image
-//     }));
-//     res.json(servicesWithImageUrls);
-// });
-
-
-
-
+// API endpoint to get a specific service by ID
 app.get('/api/services/:id', (req, res) => {
     const serviceId = parseInt(req.params.id);
-    const servicesWithImageUrls = data.map(service => ({
-        ...service,
-
-        bgImage: `http://localhost:${PORT}/images/${service.bgImage}`, // Construct the full URL for the image
-        // Construct the full URL for the image
-    }));
-    const service = servicesWithImageUrls.find(s => s.id === serviceId);
-
+    const service = data.find(s => s.id === serviceId);
 
     if (service) {
-
-
-        res.json(service);
+        res.json({
+            ...service,
+            bgImage: `${req.protocol}://${req.get('host')}/images/${service.bgImage}`,
+        });
     } else {
         res.status(404).json({ message: 'Service not found' });
     }
-});
-
-// API endpoint to get data
-app.get('/api/services', (req, res) => {
-    res.json(data);
 });
 
 // Define a root route
@@ -96,6 +73,13 @@ app.get('/', (req, res) => {
     res.send('Welcome to the API!'); // Simple response for the root URL
 });
 
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-});
+// Export the app for Vercel
+module.exports = app;
+
+// Start the server (only for local testing)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server listening on port ${PORT}`);
+    });
+}
+
