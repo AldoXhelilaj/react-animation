@@ -23,6 +23,10 @@
         "dest": "/$1.$2"
       },
       {
+        "src": "/images/(.*)",
+        "dest": "backend/images/$1"
+      },
+      {
         "src": "/(.*)",
         "dest": "/index.html"
       }
