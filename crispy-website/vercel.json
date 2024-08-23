@@ -5,7 +5,7 @@
         "src": "package.json",
         "use": "@vercel/static-build",
         "config": {
-          "distDir": "dist"
+          "distDir": "dist" 
         }
       },
       {
@@ -19,17 +19,16 @@
         "dest": "backend/index.js"
       },
       {
-        "src": "/(.*).(js|css|map|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|otf)",
-        "dest": "/$1.$2"
+        "src": "/images/(.*)",
+        "dest": "backend/images/$1" 
       },
       {
-        "src": "/images/(.*)",
-        "dest": "backend/images/$1"
+        "src": "/(.*).(js|css|map|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|otf)",
+        "dest": "/$1.$2" 
       },
       {
         "src": "/(.*)",
-        "dest": "/index.html"
+        "dest": "/index.html" 
       }
     ]
   }
-  
