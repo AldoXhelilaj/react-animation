@@ -40,9 +40,7 @@ const ServicesGrid = () => {
                     transition: 'position 0.5s ease, opacity 0.5s ease', // Smooth transition
                 }}
             >
-
-
-                <h1 className='text-xl md:text-[68px] font-bold uppercase text-primary-red mb-4 text-center'>
+                <h1 className='text-xl md:text-[68px] font-bold uppercase text-primary-red mb-4 text-center p-2'>
                     <span className='text-secondary-gray'>I nostri </span>servizi
                 </h1>
                 <div className='flex justify-center align-middle gap-4 flex-wrap'>
