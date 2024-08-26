@@ -34,7 +34,7 @@ const ServicesGrid = () => {
 
         <Layout>
             <motion.div
-                className="wrapper flex flex-col align-middle justify-center"
+                className="wrapper flex flex-col align-middle justify-center gap-9"
                 style={{
                     position: wrapperPosition,
                     transition: 'position 0.5s ease, opacity 0.5s ease', // Smooth transition

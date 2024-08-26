@@ -7,15 +7,10 @@
 }
 
 .wrapper {
-  display: flex;
 
-  justify-content: center;
-  gap: 20px;
   padding: 10px;
   left: 0;
-  /* Adjust as needed */
   right: 0;
-  /* Adjust as needed */
   overflow-y: auto;
   /* Allows scrolling */
 }

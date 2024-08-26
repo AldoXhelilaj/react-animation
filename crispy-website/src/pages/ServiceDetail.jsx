@@ -29,7 +29,7 @@ const ServiceDetail = () => {
 
     }, [id]);
 
-    if (!service) return <div className='flex justify-center items-center p-20'><img src={Loader} alt="loader" /></div>;
+    if (!service) return <div className='flex justify-center items-center p-20 h-[calc(100vh-228px)]'><img src={Loader} alt="loader" /></div>;
     const styleFirstLetter = (title) => {
         const words = title.split(' ');
         const firstWord = words[0];
@@ -59,7 +59,6 @@ const ServiceDetail = () => {
 
     const backendItems = {
         ...service?.feature2
-
     }
     
 
@@ -84,14 +83,14 @@ const ServiceDetail = () => {
 
 
             <div>
-                <h1 className=' text-xl md:text-[68px] font-bold uppercase text-primary-red mb-4 text-center'>
+                <h1 className=' text-xl md:text-[68px] font-bold uppercase text-primary-red  text-center mb-9'>
                     {styleFirstLetter(service.title)}</h1>
 
-                <div className='flex justify-center items-center max-w-[700px] p-4 mx-auto mb-6'>
+                <div className='flex justify-center items-center max-w-[700px] p-4 mx-auto mb-9'>
 
                     <p>{service.content}</p>
                 </div>
-                <div className='w-full' style={{
+                <div className='w-full mb-9' style={{
                     width: '100vw',
                     marginLeft: 'calc((-100vw + 100%) / 2)',
                     marginRight: 'calc((-100vw + 100%) / 2)'

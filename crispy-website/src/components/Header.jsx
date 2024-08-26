@@ -16,14 +16,14 @@ const Header = () => {
         <motion.div 
    
         className="bg-white text-secondary-gray  font-[600] shadow-custom font-poppins uppercase text-xs">
-            <div className="flex justify-between items-center p-4">
+            <div className="flex justify-between items-center py-4 px-6">
                 <div id="logo-container-mobile">
                     <div id="main-logo">
                         <Link to="/">
                             <img
                                 src={Logo}
                                 alt="Crispy Bacon - Taste the difference."
-                                className="h-[75px]"
+                                className="h-[140px]"
                             />
                         </Link>
                     </div>
