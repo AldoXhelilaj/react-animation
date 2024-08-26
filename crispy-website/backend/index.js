@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { title } = require('process');
+const { list } = require('postcss');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -11,35 +13,59 @@ app.use('/images', express.static(path.join(__dirname, '../public/images')));
 // Sample data to serve
 const data = [
     {
-        id: 1, title: 'Web Development',
+        id: 1,
+        title: 'Web Development',
         description: 'We transform your needs into tailored digital solutions. Through in-depth analysis, we convert business ideas into effective platforms for communication, sales, and connection. We create authentic bonds between your brand and people.',
         link: '#',
-        content: "Mondi digitali, che uniscono i brand e le persone Diamo forma a uno spazio digitale partendo da un’analisi oggettiva di bisogni specifici. Trasformiamo idee di business in piattaforme di comunicazione, vendita e contatto, creando connessioni profonde tra brand e persone. Le nostre competenze trasversali, unite alla costante formazione tecnologica e alla pluralità di linguaggi che parliamo, ci permettono di rendere croccante la realtà digital, sviluppando esperienze di navigazione uniche.",
+        content: "Digital worlds, which unite brands and people We shape a digital space starting from an objective analysis of specific needs. We transform business ideas into communication, sales and contact platforms, creating deep connections between brands and people. Our transversal skills, combined with constant technological training and the plurality of languages ​​we speak, allow us to make digital reality crisp, developing unique browsing experiences.",
         image: 'web-development-svg-color-2.svg',
         bgImage: 'web-paralax.jpg',
-        textParalax: 'Siamo Agile perché puntiamo al miglioramento continuo, collaborando con i brand in modo trasparente e chiaro.  Lavoriamo per interazioni incrementali perché pensiamo che avere l’approvazione per piccoli step sia non solo gratificante per noi e per il cliente, ma che questo ci permetta di ridurre il rischio di errore, apportando valore al progetto.'
+        textParalax: 'Siamo Agile perché puntiamo al miglioramento continuo, collaborando con i brand in modo trasparente e chiaro.  Lavoriamo per interazioni incrementali perché pensiamo che avere l’approvazione per piccoli step sia non solo gratificante per noi e per il cliente, ma che questo ci permetta di ridurre il rischio di errore, apportando valore al progetto.',
+        feature1: {
+            title: 'Frontend',
+            list: ['HTML5, CSS3, JS', 'Angular(2.0 and above) and AngularJS(1.0)', 'ReactJS','VueJS','Wordpress','Magento']
+        },
+        feature2: {
+            title: 'Backend',
+            list: ['NodeJS', 'Python', 'Firebase', 'Java EE']
+        }
     },
     {
         id: 2,
         title: 'Mobile Development',
         description: 'We navigate the mobile development ecosystem, guiding clients from the design and development of native and hybrid apps to their successful launch on the App Store (iOS) and Play Store (Android).',
         link: '#',
-        content: "Guidiamo l’ecosistema del mobile development seguendo i clienti dalla fase di progettazione e sviluppo di app native e ibride fino alla loro pubblicazione su App Store (iOS) e Play Store (Android). L’applicazione scaricata diventa così un reale valore aggiunto per l’utente, uno strumento digitale funzionale, veloce, dinamico, smart, a servizio delle persone.",
+        content: " We guide the mobile development ecosystem by following customers from the design and development phase of native and hybrid apps up to their publication on the App Store(iOS) and Play Store(Android).The downloaded application thus becomes a real added value for the user, a functional, fast, dynamic, smart digital tool at the service of people.",
         image: 'mobile-app-svg-color-1.svg',
         bgImage: 'mob-paralax.jpg',
-        textParalax:'Siamo Agile perché puntiamo al miglioramento continuo, collaborando con il cliente in modo trasparente e chiaro.  Lavoriamo per interazioni incrementali perché pensiamo che avere l’approvazione per piccoli step non sia solo gratificante per noi e per il cliente, ma che questo ci permetta di ridurre il rischio di errore, apportando valore al progetto'
-
-
+        textParalax:'Siamo Agile perché puntiamo al miglioramento continuo, collaborando con il cliente in modo trasparente e chiaro.  Lavoriamo per interazioni incrementali perché pensiamo che avere l’approvazione per piccoli step non sia  s olo gratificante per noi e per il cliente, ma che questo ci permetta di ridurre il rischio di errore, apportando valore al progetto',
+        feature1: {
+        title: 'NATIVE',
+        list: ['Android', 'iOS'],
+                    },
+        feature2: {
+            title: 'HYBRID',
+            list: ['React Native', 'Flutter', 'Ionic', 'Xamarin']
+        }
     },
-    {
-        id: 3,
+{
+    id: 3,
         title: 'UX/UI Design',
-        content: "GElaboriamo esperienze utente (UX) ed interfacce (UI) personalizzate, volte a soddisfare le esigenze delle persone, conducendole tramite un’ottimizzazione strategica e massimizzazione delle prestazioni ai risultati prefissati dal brand. Sarti digitali che progettano, convertono e fidelizzano i clienti – persone – grazie a servizi dirompenti ed efficaci che regalano esperienze interattive che migliorano il vivere quotidiano, incrementando l’engagement e il tempo di permanenza.",
+        content: "e develop customized user experiences (UX) and interfaces (UI), aimed at satisfying people's needs, leading them through strategic optimization and maximization of performance to the results set by the brand. Digital tailors who design, convert and retain customers - people - thanks to disruptive and effective services that offer interactive experiences that improve daily life, increasing engagement and time spent.",
         description: 'We craft personalized user interface experiences that cater to user needs, guiding them through strategic optimization and performance maximization to achieve the brand’s desired outcomes.',
-        link: '#', image: 'ux-mobile-svg-2.svg',
+        link: '#', 
+        image: 'ux-mobile-svg-2.svg',
         bgImage: 'ux-paralax.jpg',
-        textParalax:'Tecnologie e metodologie si fondono in un approccio Design Thinking.'
-
+        textParalax:'Tecnologie e metodologie si fondono in un approccio Design Thinking.',
+        feature1: {
+            title: 'Design Thinking',
+            list: ['Figma', 'Adobe XD'],
+        },
+        feature2: {
+        title: 'UX/UI Design',
+        list: ['Adobe Photoshop',' Adobe Illustrator',' Adobe InDesign',' Adobe After Effects',' Adobe Premiere',' Adobe Audition',' Adobe Spark'],
+            }
+  
     },
 ];
 

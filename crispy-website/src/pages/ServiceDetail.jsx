@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
+import { useParams } from 'react-router-dom';
 import ParallaxImage from '../components/ParalaxImage';
 import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
 import useDeviceDetect  from '../util/useDeviceDetect';
+import Loader from '../assets/loader.svg';
 
 const ServiceDetail = () => {
     const { id } = useParams(); // Get the service ID from the URL
@@ -11,7 +12,6 @@ const ServiceDetail = () => {
     const {isMobile} = useDeviceDetect();
 
     useEffect(() => {
-        console.log(id)
         const fetchService = async () => {
             try {
                 const response = await fetch(`/api/services/${id}`); // Adjust endpoint if needed
@@ -29,7 +29,7 @@ const ServiceDetail = () => {
 
     }, [id]);
 
-    if (!service) return <div>Loading...</div>;
+    if (!service) return <div className='flex justify-center items-center p-20'><img src={Loader} alt="loader" /></div>;
     const styleFirstLetter = (title) => {
         const words = title.split(' ');
         const firstWord = words[0];
@@ -51,21 +51,17 @@ const ServiceDetail = () => {
             }
         });
     };
-    const frontendItems = [
-        'HTML5, CSS3, JS',
-        'Angular (2.0 and above) and AngularJS (1.0)',
-        'ReactJS',
-        'VueJS',
-        'Wordpress',
-        'Magento',
-    ];
+    const frontendItems = {
+        ...service?.feature1
 
-    const backendItems = [
-        'NodeJS',
-        'Python',
-        'Firebase',
-        'Java EE',
-    ];
+    }
+    
+
+    const backendItems = {
+        ...service?.feature2
+
+    }
+    
 
     // Define animation variants for list items
     const itemVariants = {
@@ -114,14 +110,16 @@ const ServiceDetail = () => {
                         </h6>
                     </div>
                     <div>
-                        <span className='text-primary-red uppercase font-bold mb-4 block'>FRONTEND</span>
                         <motion.ul
                             className='list-disc pl-7'
                             initial="hidden"
                             whileInView="visible"
                             variants={parentVariants} // Set parent variants for staggering
                         >
-                            {frontendItems.map((item, index) => (
+                            <span className='text-primary-red uppercase font-bold mb-4 block'>{frontendItems?.title}</span>
+                            {frontendItems?.list.map((item, index) => (
+                                <>
+
                                 <motion.li
                                     key={index}
                                     variants={itemVariants} // Use item variants for each list item
@@ -129,19 +127,20 @@ const ServiceDetail = () => {
                                 >
                                     {item}
                                 </motion.li>
+                                </>
                             ))}
                         </motion.ul>
                     </div>
 
                     <div>
-                        <span className='text-primary-red uppercase font-bold mb-4 block'>BACKEND</span>
+                        <span className='text-primary-red uppercase font-bold mb-4 block'>{backendItems?.title}</span>
                         <motion.ul
                             className='list-disc pl-7'
                             initial="hidden"
                             whileInView="visible"
                             variants={parentVariants} // Set parent variants for staggering
                         >
-                            {backendItems.map((item, index) => (
+                            {backendItems?.list.map((item, index) => (
                                 <motion.li
                                     key={index}
                                     variants={itemVariants} // Use item variants for each list item
